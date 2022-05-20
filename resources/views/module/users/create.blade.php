@@ -48,11 +48,17 @@
                   </div>
                </div>
                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">Username <span class="text-danger">*</span></label>
+                  <div class="col-lg-9">
+                     <input type="username" placeholder="username" name="username" class="form-control" id="username" data-msg-required="Tidak boleh kosong !" required>
+                  </div>
+               </div>
+               {{-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Email <span class="text-danger">*</span></label>
                   <div class="col-lg-9">
                      <input type="email" placeholder="email@domain.com" name="email" class="form-control" id="email" data-msg-email="Masukkan akun email yang valid !" data-msg-required="Tidak boleh kosong !" required>
                   </div>
-               </div>
+               </div> --}}
                <div class="form-group row">
                   <label class="col-lg-3 col-form-label">Password <span class="text-danger">*</span></label>
                   <div class="col-lg-9">

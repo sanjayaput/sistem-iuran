@@ -60,7 +60,7 @@ if(can_edit==="1" || can_delete==="1"){
     columns = [
         {"data":"DT_RowIndex", orderable: false, searchable: false},
         {"data":"name"},
-        {"data":"email"},
+        {"data":"username"},
         {"data":"roles"},
         {"data":"active"},
         {"data":"action"},
@@ -70,7 +70,7 @@ if(can_edit==="1" || can_delete==="1"){
     columns = [
         {"data":"DT_RowIndex", orderable: false, searchable: false},
         {"data":"name"},
-        {"data":"email"},
+        {"data":"username"},
         {"data":"roles"},
         {"data":"active"},
     ];
@@ -132,7 +132,7 @@ var table = $('.datatable-button-init-custom').DataTable({
             <tr>
                 <th width="5%">No</th>
                 <th width="20%">Nama</th>
-                <th width="30%">Email</th>
+                <th width="30%">Username</th>
                 <th>Level</th>
                 <th width="10%">Status</th>
                 @if(Gate::check('user-edit') || Gate::check('user-delete'))

@@ -36,7 +36,7 @@
                             <span class="pl-1">( {{ ucfirst($role) }} )</span>
                             @endforeach
                         </div>
-                        <div class="font-size-xs opacity-50">{{ Auth::user()->email }}</div>
+                        <div class="font-size-xs opacity-50">{{ Auth::user()->username }}</div>
                     </div>
                 </div>
             </div>

@@ -89,7 +89,8 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required',
-            'email'         => 'required|email|unique:users,email',
+            // 'email'         => 'required|email|unique:users,email',
+            'username'      => 'required|unique:users,username',
             'password'      => 'required|same:confirm_password',
             'jenis_kelamin' => 'required|string',
             'roles'         => 'required'
@@ -99,7 +100,7 @@ class UserController extends Controller
         // attribute photo
         $filename = 'avatar.png';
         if ($request->hasFile('photo')) {
-            $filename = Str::random(5) . $request->email . '.jpg';
+            $filename = Str::random(5) . $request->username . '.jpg';
             $file = $request->file('photo');
             $file->move(('upload/images/users'), $filename);
             $input['foto'] = $filename;
@@ -108,11 +109,12 @@ class UserController extends Controller
 
         $user = User::create([
             'name'          => ucwords(strtolower($request->name)),
-            'email'         => $request->email,
+            // 'email'         => $request->email,
+            'username'         => $request->username,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat'        => ucwords(strtolower($request->alamat)),
             'foto'          => $filename,
-            'email'         => $request->email,
+            // 'email'         => $request->email,
             'password'      => Hash::make($request->input('password')),
             'api_token'     => Str::random(60),
             'active'        => '1',
@@ -153,7 +155,8 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required',
-            'email'         => 'required|email|unique:users,email,'.$id,
+            'username'         => 'required|unique:users,username,'.$id,
+            // 'email'         => 'required|email|unique:users,email,'.$id,
             'password'      => 'same:confirm_password',
             //'roles'         => 'required',
             'jenis_kelamin' => 'required|string',
@@ -171,7 +174,7 @@ class UserController extends Controller
              if (File::exists($user_foto) && $user->foto!='avatar.png' && $user->foto!=NULL) {
                  unlink($user_foto);
              }
-             $filename = Str::random(5) . $request->email . '.jpg';
+             $filename = Str::random(5) . $request->username . '.jpg';
              $file = $request->file('photo');
              $file = $file->move(('upload/images/users'), $filename);
          }
@@ -183,7 +186,8 @@ class UserController extends Controller
             // update
             $update = $user->update([
                 'name'         => $request->name,
-                'email'        => $request->email,
+                'username'        => $request->username,
+                // 'email'        => $request->email,
                 'jenis_kelamin'=> $request->jenis_kelamin,
                 'alamat'       => $request->alamat,
                 'foto'         => $filename,
@@ -196,7 +200,7 @@ class UserController extends Controller
             $user->assignRole($request->input('roles'));
         }
 
-        return redirect()->route('home')
+        return redirect()->route('users')
                          ->with('success','Data pengguna berhasil di perbaharui....');
     }
 

@@ -139,12 +139,14 @@ class PengeluaranController extends Controller
     public function update(Request $request, $id)
     {
 
+        // return $request->all();
+
         $validator = Validator::make($request->all(), [ 
             'tanggal'          => 'required|string',
             'nominal'          => 'required|string',
             'status'           => 'required|string',
             'catatan'          => 'required|string',
-            'bukti'            => 'image|mimes:jpeg,png,jpg|max:2048'
+            // 'bukti'            => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
       
         if ($validator->fails()) {

@@ -55,11 +55,18 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Username <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="username" placeholder="username" id="username" value="{{ $user->username }}" name="username" class="form-control" data-msg-required="Tidak boleh kosong !" required>
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Email <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
                             <input type="email" placeholder="email@domain.com" id="email" value="{{ $user->email }}" name="email" class="form-control" data-msg-email="Masukkan akun email yang valid !" data-msg-required="Tidak boleh kosong !" required>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group row">
                      <label class="col-lg-3 col-form-label">Jenis Kelamin <span class="text-danger">*</span></label>
