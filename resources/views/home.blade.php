@@ -21,7 +21,7 @@
                     @if ($profil_desa)
                         {!! $profil_desa->konten !!}
                     @else
-                        <img src="{{ asset('assets/global/images/logo-desa.png') }}" width="200" height="200" class="rounded-circle" alt="" />
+                        <img src="{{ asset('logo_asak.png') }}" width="200" height="200" class="rounded-circle" alt="" />
                             
                             <h4 class="font-weight-semibold mb-1">SELAMAT DATANG</h4>
                             <h5 class="card-title mb-4">DI SISTEM INFORMASI PENGELOLAAN KEUANGAN DESA ADAT ASAK</h5>

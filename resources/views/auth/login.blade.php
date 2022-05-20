@@ -43,7 +43,7 @@
                 <div class="text-center mb-3">
                   <!-- <i class="icon-user-lock icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1">
                   </i> -->
-                  <img src="{{ asset('assets/global/images/logo-desa.png') }}" width="200" height="200" class="rounded-circle" alt="" />
+                  <img src="{{ asset('logo_asak.png') }}" width="200" height="200" class="rounded-circle" alt="" />
                   <!-- <img class="card-img-top img-fluid" src="{{ URL::to('/') }}/assets/global/images/logo.png" alt=""> -->
                   <h5 class="mb-0">Login
                   </h5>
