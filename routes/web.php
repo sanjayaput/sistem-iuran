@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     // echo phpinfo();
     // $users = \App\User::all();
@@ -30,6 +33,7 @@ Route::match(['get', 'post'], 'register', function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/error', 'ErrorController@index')->name('error');
+Route::post('/tiny-image-upload', 'TinyUploadController@uploadImage');
 
 # User Route
 Route::middleware(['auth'])->group(function () {
@@ -39,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/edit/{id}', 'UserController@edit');
     Route::post('/users/delete/{id}', 'UserController@destroy');
     Route::put('/users/update/{id}', 'UserController@update');
+
+    Route::get('/profil-desa', 'ProfilDesaController@edit')->name('profil-desa');
+    Route::post('/profil-desa/update-create', 'ProfilDesaController@updateOrCreate');
 
     Route::get('/roles', 'RoleController@index')->name('roles');
     Route::get('/roles/create', 'RoleController@create');

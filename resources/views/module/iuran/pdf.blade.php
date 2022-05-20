@@ -16,7 +16,7 @@
 <body data-rsssl=1>
 	<style type="text/css"> table tr td, table tr th{ font-size: 9pt; } </style>
 	<center>
-		<h5>DESA ADAT TAUKA</h5>
+		<h5>DESA ADAT ASAK</h5>
 		<h6>LAPORAN IURAN</h6>
 	</center>
 

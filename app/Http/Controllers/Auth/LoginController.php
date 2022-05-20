@@ -41,11 +41,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required|string'
         ]);
         
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1])) {
+        if (auth()->attempt(['username' => $request->username, 'password' => $request->password, 'active' => 1])) {
             return redirect()->intended('home');
         }
         return redirect()->back()->with(['error' => 'Password Invalid / Inactive Users']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProfilDesa;
 use Illuminate\Http\Request;
 use DB;
 
@@ -24,7 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-                                  
-        return view('home');
+        $profil_desa = ProfilDesa::first();
+        
+        $data = [
+            'profil_desa' => $profil_desa
+        ];                  
+
+        return view('home', $data);
     }
 }

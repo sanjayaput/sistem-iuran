@@ -56,11 +56,11 @@
 							    </div>
                   @endif
                 </div>
-                <div class="form-group form-group-feedback form-group-feedback-left{{ $errors->has('email') ? ' has-error' : '' }}">
-                  <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
-                  @if ($errors->has('email'))
+                <div class="form-group form-group-feedback form-group-feedback-left{{ $errors->has('username') ? ' has-error' : '' }}">
+                  <input id="username" type="username" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus>
+                  @if ($errors->has('username'))
                   <span class="text-danger">
-                    {{ $errors->first('email') }}
+                    {{ $errors->first('username') }}
                   </span>
                   @endif
                   <div class="form-control-feedback">

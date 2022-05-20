@@ -21,11 +21,16 @@
         <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- /global stylesheets -->
         @yield('stylesheet')
-        <!-- <style>
-            #control-map {
-            width: 60% !important;
-        }
-</style> -->
+        <style>
+            .sidebar-dark {
+                background-color: #239392;
+                color: #fff;
+            }
+
+            .navbar-dark {
+                background-color: #226b6e;
+            }
+        </style>
     </head>
 
     <body class="navbar-top">
@@ -64,4 +69,5 @@
         <script src="{{ asset('assets/js/app.js') }}"></script>
         <!-- /theme JS files -->
         @yield('init')
+        @stack('scripts')
 </html>

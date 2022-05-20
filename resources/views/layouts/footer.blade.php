@@ -5,18 +5,18 @@
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-footer">
-        <span class="navbar-text"> Copyright &copy; 2022</span>
+        <span class="navbar-text"> SISTEM INFORMASI PENGELOLAAN KEUANGAN DESA ADAT ASAK </span>
 
         <ul class="navbar-nav ml-lg-auto">
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="#" class="navbar-nav-link">
                     <span class="text-pink">
                         <i class="icon-code mr-1"></i>
                         Versi 1.0.0
                     </span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

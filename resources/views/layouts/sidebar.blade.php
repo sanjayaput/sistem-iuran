@@ -20,7 +20,15 @@
             <div class="card-body">
                 <div class="media">
                     <div class="mr-3">
-                        <a href="#"><img src="{{ asset('assets/global/images/image.png') }}" width="38" height="38" class="rounded-circle" alt="" /> </a>
+                        @role('admin')
+                            <a href="#"><img src="{{ asset('admin.png') }}" width="38" height="38" class="rounded-circle" style="object-fit:contain" alt="" /> </a>
+                        @endrole
+                        @role('anggota')
+                            <a href="#"><img src="{{ asset('warga.png') }}" width="38" height="38" class="rounded-circle" style="object-fit:contain" alt="" /> </a>
+                        @endrole
+                        @role('kades')
+                            <a href="#"><img src="{{ asset('desa.png') }}" width="38" height="38" class="rounded-circle" style="object-fit:contain" alt="" /> </a>
+                        @endrole
                     </div>
                     <div class="media-body">
                         <div class="media-title font-weight-semibold">{{ Auth::user()->name }} 
@@ -66,6 +74,7 @@
                     </ul>
                 </li>
             @endif
+
             @if(Gate::check('grafik'))
                 <li class="nav-item">
                     <a href="{{ url('/chart') }}" class="nav-link {{ request()->is('chart') ? 'active' : '' }}">
@@ -83,6 +92,15 @@
                     </a>
                 </li>
             @endif
+
+            @role('admin')
+                <li class="nav-item">
+                    <a href="{{ url('/profil-desa') }}" class="nav-link {{ request()->is('profil-desa') ? 'active' : '' }}">
+                        <i class="icon-cogs"></i>
+                        <span>Profil Desa</span>
+                    </a>
+                </li>
+            @endrole
 
             <!-- @role('admin') -->
                 <!-- Settings -->

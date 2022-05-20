@@ -29,7 +29,18 @@
 
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/global/images/image.png') }}" class="rounded-circle" alt="" />
+                    @role('admin')
+                        <img src="{{ asset('admin.png') }}" class="rounded-circle" width="38" height="38" style="object-fit: contain" alt="" />
+                    @endrole
+
+                    @role('anggota')
+                        <img src="{{ asset('warga.png') }}" class="rounded-circle" width="38" height="38" style="object-fit: contain" alt="" />
+                    @endrole
+                    
+                    @role('kades')
+                        <img src="{{ asset('desa.png') }}" class="rounded-circle" width="38" height="38" style="object-fit: contain" alt="" />
+                    @endrole
+
                     <span>{{ Auth::user()->name }}</span>
                 </a>
 
