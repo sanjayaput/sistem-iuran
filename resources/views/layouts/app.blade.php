@@ -19,11 +19,12 @@
         <link href="{{ asset('assets/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('chart.js/Chart.css') }}" rel="stylesheet" type="text/css" />
         <!-- /global stylesheets -->
         @yield('stylesheet')
         <style>
             .sidebar-dark {
-                background-color: #239392;
+                background-color: #226b6e;
                 color: #fff;
             }
 

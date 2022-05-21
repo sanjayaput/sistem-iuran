@@ -79,5 +79,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/iuran/report/pdf', 'IuranController@report_pdf');
 
     Route::get('/chart', 'ChartController@index');
+    Route::post('/chart/generate', 'ChartController@generateChart');
     
 });
