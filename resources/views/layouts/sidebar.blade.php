@@ -41,6 +41,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- /user menu -->
 
         <!-- Main navigation -->
