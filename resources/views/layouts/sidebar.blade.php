@@ -33,7 +33,7 @@
                     <div class="media-body">
                         <div class="media-title font-weight-semibold">{{ Auth::user()->name }} 
                             @foreach(Auth::user()->roles->pluck('name') as $role)
-                            <span class="pl-1">( {{ ucfirst($role) }} )</span>
+                            <span class="pl-1">( {{ ucfirst(($role == 'kades' ? 'bendesa' : $role)) }} )</span>
                             @endforeach
                         </div>
                         <div class="font-size-xs opacity-50">{{ Auth::user()->username }}</div>

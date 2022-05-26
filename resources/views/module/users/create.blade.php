@@ -101,7 +101,7 @@
                   <div class="col-lg-9">
                      <select multiple="multiple" data-msg-required="Silahkan pilih level !" required name="roles[]" data-placeholder="Pilih Level" class="form-control form-control-select2" data-fouc>
                         @foreach($roles as $role)
-                        <option value="{{$role}}">{{ $role }}</option>
+                           <option value="{{$role}}">{{ $role == 'kades' ? 'bendesa' : $role }}</option>
                         @endforeach
                      </select>
                   </div>

@@ -59,7 +59,7 @@ class UserController extends Controller
                  $roles = $user->roles->pluck('name')->toArray();
                  $badge = '';
                 foreach ($roles as $role) {
-                    $badge .= '<span class="badge badge-light badge-striped badge-striped-left border-left-info mr-2">'.$role.'</span>';
+                    $badge .= '<span class="badge badge-light badge-striped badge-striped-left border-left-info mr-2">'.($role == 'kades' ? 'bendesa' : $role).'</span>';
                 }
                  return $badge;
               })

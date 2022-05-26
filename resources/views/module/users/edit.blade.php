@@ -132,7 +132,12 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Level <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                           {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control form-control-select2','multiple', 'data-msg-required' => 'Silahkan pilih level !', 'required')) !!}
+                            <select multiple="multiple" data-msg-required="Silahkan pilih level !" required name="roles[]" data-placeholder="Pilih Level" class="form-control form-control-select2" data-fouc>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role }}" @if(in_array($role, $userRole)) selected @endif>{{ $role == 'kades' ? 'bendesa' : $role }}</option>
+                                @endforeach
+                            </select>       
+                           {{-- {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control form-control-select2','multiple', 'data-msg-required' => 'Silahkan pilih level !', 'required')) !!} --}}
                         </div>
                     </div>
                     @endrole
