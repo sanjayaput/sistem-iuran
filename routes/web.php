@@ -24,6 +24,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+
 Auth::routes();
 
 // Disable route register
