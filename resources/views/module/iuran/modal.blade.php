@@ -25,15 +25,17 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-form-label col-sm-3">Status  <span class="text-danger">*</span></label>
-                        <div class="col-sm-9">
-                        <select class="form-control" name="status" id="status" data-msg-required="Tidak boleh kosong !">
-                            <option value="1">Sudah Bayar</option>
-                            <option value="0">Belum Bayar</option>
-                        </select>
+                    @role('kades')
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-3">Status  <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                            <select class="form-control" name="status" id="status" data-msg-required="Tidak boleh kosong !">
+                                <option value="1">Sudah Bayar</option>
+                                <option value="0">Belum Bayar</option>
+                            </select>
+                            </div>
                         </div>
-                    </div>
+                    @endrole
 
                     
                     <div class="form-group row">

@@ -1,5 +1,7 @@
 <?php
 
+use App\ProfilDesa;
+
 /**
  * Get the message array structure.
  *
@@ -68,4 +70,9 @@ function tanggal_indonesia($tgl, $tampil_hari=true){
 function format_rupiah($angka){ 
     $hasil =  number_format($angka,0, ',' , '.'); 
     return 'Rp. '.$hasil; 
+}
+
+function getProfilDesa()
+{
+    return ProfilDesa::first();
 }

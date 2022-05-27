@@ -76,14 +76,14 @@
                 </li>
             @endif
 
-            @if(Gate::check('grafik'))
+            {{-- @if(Gate::check('grafik')) --}}
                 <li class="nav-item">
                     <a href="{{ url('/chart') }}" class="nav-link {{ request()->is('chart') ? 'active' : '' }}">
                         <i class="icon-stats-bars3"></i>
                         <span>Grafik Keuangan</span>
                     </a>
                 </li>
-            @endif
+            {{-- @endif --}}
 
             @if(Gate::check('user-list'))
                 <li class="nav-item">

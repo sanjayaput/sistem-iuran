@@ -80,13 +80,19 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+
+        $field = [
             'tanggal'          => 'required|string',
             'nominal'          => 'required|string',
-            'status'           => 'required|string',
             'catatan'          => 'required|string',
             'bukti'            => 'image|mimes:jpeg,png,jpg|max:2048'
-        ]);
+        ];
+
+        if(Auth::user()->hasRole('kades')){
+            $field += ['status' => 'required|string'];
+        }
+
+        $this->validate($request, $field);
 
         // attribute photo
         $filename = '';
@@ -96,11 +102,10 @@ class PengeluaranController extends Controller
             $file = $file->move(('upload/images/bukti'), $filename);
         }
 
-
         $save = Pengeluaran::create([
             'tanggal'           => $request->input('tanggal'), 
             'nominal'           => $request->input('nominal'),
-            'status'            => $request->input('status'),
+            'status'            => Auth::user()->hasRole('kades') ? $request->input('status') : 0,
             'catatan'           => $request->input('catatan'),
             'bukti'             => $filename,
             'user_id'           => Auth::user()->id
@@ -138,16 +143,18 @@ class PengeluaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // return $request->all();
-
-        $validator = Validator::make($request->all(), [ 
+        $field = [ 
             'tanggal'          => 'required|string',
             'nominal'          => 'required|string',
-            'status'           => 'required|string',
             'catatan'          => 'required|string',
             // 'bukti'            => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
-        ]);
+        ];
+
+        if(Auth::user()->hasRole('kades')){
+            $field += ['status' => 'required|string'];
+        }
+
+        $validator = Validator::make($request->all(), $field);
       
         if ($validator->fails()) {
           return response()->json($validator->errors(), 400);
@@ -170,7 +177,11 @@ class PengeluaranController extends Controller
 
         $data->tanggal          = $request->input('tanggal');
         $data->nominal          = $request->input('nominal');
-        $data->status           = $request->input('status');
+        
+        if(Auth::user()->hasRole('kades')){
+            $data->status           = $request->input('status');
+        }
+
         $data->catatan          = $request->input('catatan');
         $data->bukti            = $filename;
         $data->save();

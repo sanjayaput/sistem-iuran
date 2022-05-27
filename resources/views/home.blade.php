@@ -17,16 +17,17 @@
 
             <!-- Sales stats -->
             <div class="card">
-                <div class="card-body @if(!$profil_desa) text-center @endif">
-                    @if ($profil_desa)
-                        {!! $profil_desa->konten !!}
-                    @else
+                <div class="card-body">
+                    <div class="text-center">
                         <img src="{{ asset('logo_asak.png') }}" width="200" height="200" class="rounded-circle" alt="" />
-                            
                             <h4 class="font-weight-semibold mb-1">SELAMAT DATANG</h4>
                             <h5 class="card-title mb-4">DI SISTEM INFORMASI PENGELOLAAN KEUANGAN DESA ADAT ASAK</h5>
                         </div>
-                    @endif
+                        @if ($profil_desa)
+                            <h1 class="text-center">Profil Desa</h1>
+                            {!! $profil_desa->konten !!}
+                        @endif
+                    </div>
             </div>
             <!-- /sales stats -->
 

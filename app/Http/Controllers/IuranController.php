@@ -86,19 +86,24 @@ class IuranController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $field = [
             'tanggal'          => 'required|string',
             'nominal'          => 'required|string',
             'status'           => 'required|string',
             'jenis_iuran'      => 'required|string',
             'anggota_id'       => 'required|string',
-           
-        ]);
+        ];
+
+        if(Auth::user()->hasRole('kades')){
+            $field += ['status' => 'required|string'];
+        }
+
+        $this->validate($request, $field);
 
         $save = Iuran::create([
             'tanggal'           => $request->input('tanggal'), 
             'nominal'           => $request->input('nominal'),
-            'status'            => $request->input('status'),
+            'status'            => Auth::user()->hasRole('kades') ? $request->input('status') : 0,
             'jenis_iuran'       => $request->input('jenis_iuran'),
             'anggota_id'        => $request->input('anggota_id'),
             'user_id'           => Auth::user()->id
@@ -137,13 +142,18 @@ class IuranController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [ 
+        $field = [ 
             'tanggal'          => 'required|string',
             'nominal'          => 'required|string',
-            'status'           => 'required|string',
             'jenis_iuran'      => 'required|string',
             'anggota_id'       => 'required|string',
-        ]);
+        ];
+
+        if(Auth::user()->hasRole('kades')){
+            $field += ['status' => 'required|string'];
+        }
+
+        $validator = Validator::make($request->all(), $field);
       
         if ($validator->fails()) {
           return response()->json($validator->errors(), 400);
@@ -152,7 +162,11 @@ class IuranController extends Controller
         $data = Iuran::find($id);
         $data->tanggal          = $request->input('tanggal');
         $data->nominal          = $request->input('nominal');
-        $data->status           = $request->input('status');
+        
+        if(Auth::user()->hasRole('kades')){
+            $data->status           = $request->input('status');
+        }
+
         $data->jenis_iuran      = $request->input('jenis_iuran');
         $data->anggota_id       = $request->input('anggota_id');
         $data->save();
