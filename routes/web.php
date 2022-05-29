@@ -21,7 +21,7 @@ Route::get('/', function () {
     //     $user->password = bcrypt('asdasdasd');
     //     $user->save();
     // }
-    return redirect('/home');
+    return redirect('/chart');
 });
 
 

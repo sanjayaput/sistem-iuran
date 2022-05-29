@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return redirect('/chart');
         $profil_desa = ProfilDesa::first();
         
         $data = [

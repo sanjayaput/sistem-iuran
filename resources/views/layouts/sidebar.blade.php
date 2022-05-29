@@ -52,12 +52,20 @@
                     <div class="text-uppercase font-size-xs line-height-xs">Main</div>
                     <i class="icon-menu" title="Main"></i>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ url('/home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
                         <i class="icon-home4"></i>
                         <span>Home</span>
                     </a>
+                </li> --}}
+                {{-- @if(Gate::check('grafik')) --}}
+                <li class="nav-item">
+                    <a href="{{ url('/chart') }}" class="nav-link {{ request()->is('chart') ? 'active' : '' }}">
+                        <i class="icon-stats-bars3"></i>
+                        <span>Grafik Keuangan</span>
+                    </a>
                 </li>
+            {{-- @endif --}}
             @if(Gate::check('pemasukan-list') || Gate::check('pengeluaran-list') || Gate::check('iuran-list'))
                 <li class="nav-item nav-item-submenu  {{ (request()->is('pemasukan*') || request()->is('pengeluaran*') || request()->is('iuran*'))  ? 'nav-item-expanded nav-item-open' : '' }}">
                     <a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Transaksi</span></a>
@@ -75,15 +83,6 @@
                     </ul>
                 </li>
             @endif
-
-            {{-- @if(Gate::check('grafik')) --}}
-                <li class="nav-item">
-                    <a href="{{ url('/chart') }}" class="nav-link {{ request()->is('chart') ? 'active' : '' }}">
-                        <i class="icon-stats-bars3"></i>
-                        <span>Grafik Keuangan</span>
-                    </a>
-                </li>
-            {{-- @endif --}}
 
             @if(Gate::check('user-list'))
                 <li class="nav-item">
