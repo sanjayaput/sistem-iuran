@@ -225,7 +225,9 @@ class PengeluaranController extends Controller
             $query = $query." WHERE tanggal BETWEEN '$date_from' AND '$date_to'";
         }
 
+        
         $data = DB::select($query);
+        // return view('module.pengeluaran.pdf',['pengeluaran'=>$data]);
     
         $pdf = PDF::loadview('module.pengeluaran.pdf',['pengeluaran'=>$data]);
         return $pdf->stream();
