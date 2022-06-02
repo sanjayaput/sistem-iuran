@@ -148,7 +148,7 @@ $(document).on('click', '.badge-success', function(e){
                     $('#tanggal').val(data.tanggal);
                     $('#nominal').val(data.nominal);
                     $('#status').val(data.status);
-                    $('select[name=jenis_pemasukan] option').filter(':selected').val(data.jenis_pemasukan);
+                    $('#jenis_pemasukan').val(data.jenis_pemasukan);
                     $('select[name=status] option').filter(':selected').val(data.status);
                     $('textarea#keterangan').val(data.keterangan);
                 }
@@ -237,8 +237,10 @@ $('#modal_form').submit(function(e){
     var tanggal  = $('input[name="tanggal"]').val();
     var nominal  = $('input[name="nominal"]').val();
     var status   =  $('select[name=status] option').filter(':selected').val();
-    var jenis    =  $('select[name=jenis_pemasukan] option').filter(':selected').val();
+    var jenis    =  $('input[name=jenis_pemasukan]').val();
     var keterangan = $('textarea#keterangan').val();
+
+    // console.log(jenis);
 
     var formData = new FormData();
     formData.append('tanggal', tanggal);

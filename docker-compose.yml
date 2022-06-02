@@ -13,7 +13,7 @@ services:
             - ./docker-config/nginx.conf:/etc/nginx/nginx.conf
             - ./docker-config/php.ini:/etc/php7/conf.d/custom.ini
         networks:
-            - mainapp
+            - docker_main
         ports:
             - 8481:8080
 
@@ -29,5 +29,5 @@ services:
         - ./:/var/www/html
             
 networks:
-    mainapp:
-        name: mainapp
+    docker_main:
+        name: docker_main

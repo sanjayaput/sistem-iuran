@@ -40,10 +40,11 @@
                     <div class="form-group row">
                         <label class="col-form-label col-sm-3">Jenis Pemasukan  <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                        <select class="form-control" name="jenis_pemasukan" id="jenis_pemasukan" data-msg-required="Tidak boleh kosong !">
+                        <input type="text" name="jenis_pemasukan" id="jenis_pemasukan" data-msg-required="Tidak boleh kosong !" class="form-control">
+                        {{-- <select class="form-control" name="jenis_pemasukan" id="jenis_pemasukan" data-msg-required="Tidak boleh kosong !">
                             <option value="Cash">Cash</option>
                             <option value="Credit">Credit</option>
-                        </select>
+                        </select> --}}
                      </div>
                     </div>
 
