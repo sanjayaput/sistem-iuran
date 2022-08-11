@@ -13,21 +13,21 @@ services:
             - ./docker-config/nginx.conf:/etc/nginx/nginx.conf
             - ./docker-config/php.ini:/etc/php7/conf.d/custom.ini
         networks:
-            - docker_main
+            - mainapp
         ports:
-            - 8481:8080
+            - 8088:8080
 
-    npm:
-        image: node:17-alpine
-        container_name: npm-iuran
-        restart: unless-stopped
-        working_dir: /var/www/html
-        entrypoint: ["npm"]
-        depends_on:
-        - app
-        volumes:
-        - ./:/var/www/html
+    # npm:
+    #     image: node:17-alpine
+    #     container_name: npm-iuran
+    #     restart: unless-stopped
+    #     working_dir: /var/www/html
+    #     entrypoint: ["npm"]
+    #     depends_on:
+    #     - app
+    #     volumes:
+    #     - ./:/var/www/html
             
 networks:
-    docker_main:
-        name: docker_main
+    mainapp:
+        name: mainapp

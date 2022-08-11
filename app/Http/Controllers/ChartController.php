@@ -17,9 +17,9 @@ class ChartController extends Controller
         // $data = DB::select("SELECT a.*, b.total_pengeluaran, c.total_iuran FROM vpemasukan AS a LEFT JOIN vpengeluaran AS b ON b.month_id = a.month_id LEFT JOIN viuran c ON c.month_id = a.month_id");
         // dd($data);
 
-        $tahun_pemasukan = Pemasukan::selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
-        $tahun_pengeluaran = Pengeluaran::selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
-        $tahun_iuran = Iuran::selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
+        $tahun_pemasukan = Pemasukan::where('status', 1)->selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
+        $tahun_pengeluaran = Pengeluaran::where('status', 1)->selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
+        $tahun_iuran = Iuran::where('status', 1)->selectRaw('DISTINCT year(tanggal) year')->orderBy('year', 'DESC')->pluck('year', 'year')->toArray();
 
         $tahun = array_unique(array_merge($tahun_pemasukan, $tahun_pengeluaran, $tahun_iuran));
         asort($tahun);
@@ -34,19 +34,19 @@ class ChartController extends Controller
     {
         $year = isset($request->year) && $request->year != 'now' ? $request->year : Carbon::now()->year;
         $months = ['January',  'February',  'March',  'April',  'May',  'June',  'July',  'August',  'September',  'October',  'November',  'December'];
-        $pemasukan = Pemasukan::selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
+        $pemasukan = Pemasukan::where('status', 1)->selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
                 ->whereYear('tanggal', $year)
                 ->groupBy('year', 'month')
                 ->orderBy('month', 'DESC')
                 ->get()->toArray();
 
-        $pengeluaran = Pengeluaran::selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
+        $pengeluaran = Pengeluaran::where('status', 1)->selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
                 ->whereYear('tanggal', $year)
                 ->groupBy('year', 'month')
                 ->orderBy('month', 'DESC')
                 ->get()->toArray();
 
-        $iuran = Iuran::selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
+        $iuran = Iuran::where('status', 1)->selectRaw('year(tanggal) year, monthname(tanggal) month, sum(nominal) data')
                 ->whereYear('tanggal', $year)
                 ->groupBy('year', 'month')
                 ->orderBy('month', 'DESC')
